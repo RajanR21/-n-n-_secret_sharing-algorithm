@@ -54,7 +54,7 @@ public static class SecretImageSharing
 
         for(int i=0;i< shadowImages.Length; i++)
         {
-          //  shadowImages[i].Save($"C:\\Users\\G3-3500\\Pictures\\Saved Pictures\\share_{i}.png");
+            shadowImages[i].Save($"C:\\Users\\G3-3500\\Pictures\\Saved Pictures\\share_{i}.png");
         }
         return shadowImages;
     }
@@ -73,7 +73,7 @@ public static class SecretImageSharing
             {
                 Color pixelColor = shadowImages[0].GetPixel(x, y);
 
-                for (int i = 1; i < n; i++)
+                for (int i = 1; i < n-1; i++)
                 {
                     pixelColor = Color.FromArgb(
                         pixelColor.R ^ shadowImages[i].GetPixel(x, y).R,
@@ -93,10 +93,10 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        string imagePath = "C:\\Users\\G3-3500\\Pictures\\Saved Pictures\\XORed_Colour_out.png";
+        string imagePath = "C:\\Users\\G3-3500\\Pictures\\Saved Pictures\\clr.png";
         Bitmap secretImage = new Bitmap(imagePath);
 
-        int n = 5; // Total number of shadow images
+        int n = 3; // Total number of shadow images
 
         Bitmap[] shadowImages = SecretImageSharing.SplitImageIntoShadows(secretImage, n);
         Bitmap revealedImage = SecretImageSharing.RevealSecretImage(shadowImages);
